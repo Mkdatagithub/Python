@@ -1,0 +1,120 @@
+# Check whether a number is even or odd
+num=input("Enter a number: ")
+num=int(num)
+if num%2==0:
+    print("number is even")
+else:
+    print("number is odd")
+    
+#Find out the type of cuisine
+Indian=("Samosa","Papdi chaat","Idli sambar","Masala dosa","Cutlet", "Chole bhatture")
+Chinese=("Pot stickers","Egg fried rice", "haka noodles")
+Italian=("pasta","pizza","risotto")
+
+Dish=input("Enter name of the dish: ")
+
+if Dish in Indian:
+    print("Indian cuisine")
+elif Dish in Chinese:
+    print("Chinese cuisine")
+elif Dish in Italian:
+    print("Italian cuisine")
+else:
+    print("Cuisine is not known")
+    
+# range function
+for i in range(1,11):
+     print(i*i)
+# total monthly expense
+exp=(2340,2450,3100,2800,2700)
+total=0
+for i in range(len(exp)):
+     print("Month:",i+1,"Expense:",exp[i])
+     total=total+exp[i]
+
+# Coin toss
+result=("heads","tails","tails","heads","tails","heads","heads","tails","tails","tails")
+j = 0
+for i in result:
+    if i == "heads":
+        j=j+1
+        print("The no. of heads are", j)
+        
+#Functions Calculate area of triangle
+def triangle(base,height):
+    print("base:",base)
+    print("height:", height)
+    area=0.5*base*height
+    return area
+triangle1=triangle(2,3)
+triangle2=triangle(10,20)
+print("triangle1 area:",triangle1)
+print("triangle2 area:",triangle2)
+
+# Function calculate area of triangle or rectangle
+def area(a,b,h):
+    if a==0:
+        Tarea = 1 / 2 * b * h
+    elif a==1:
+        Tarea = b * h
+    else:
+        print("Invalid Response, Default area will be 0")
+        Tarea = 0
+    return Tarea
+a=int(input("Enter 0 for triangle and 1 for rectangle : "))
+b=int(input("Enter base: "))
+h=int(input("Enter height: "))
+ar=area(a,b,h)
+print("base :",b)
+print("height :",h)
+print("area: ",ar)
+
+# Print pattern
+def print_patter(length):
+    pattern = '*' * length
+    for i in range(len(pattern)):
+        print(pattern[0:i + 1])
+print_patter(3)
+print_patter(4)
+
+#Write a function countnum(num) where it finds the number of occurences in the given file
+#Change the file so when the program ends it has the sum of those number in a line as shown below
+#sum: 14 | 6,8
+#sum: 13 | 7,6
+#sum: 10 | 2,8
+#sum: 14 | 9,5
+#sum: 15 | 9,6
+x= int(input("Enter a number: "))
+def count_num_in_file(num):
+    count = 0
+    with open("C:\\code\my.txt","r") as f:
+        for line in f.readlines():
+            tokens = line.split(",")
+            count += count_num_in_tokens(tokens, num)
+            print(count)
+    return count
+
+def count_num_in_tokens(tokens, num):
+    count = 0
+    for token in tokens:
+        if num == int(token):
+            count+=1
+    return count
+count_num_in_file(x)
+
+
+def sum_tokens(tokens):
+    sum = 0
+    for token in tokens:
+        sum += int(token)
+    return sum
+output_lines = []
+with open("C:\\code\\my.txt","r")as f:
+    for line in f:
+        tokens = line.split(",")
+        print(tokens)
+        total = sum_tokens(tokens)
+        print(total)
+        output_lines.append("sum: " + str(total) + " | " + line)
+with open("C:\\code\\my.txt", "w") as f:
+    f.writelines(output_lines)

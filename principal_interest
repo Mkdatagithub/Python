@@ -1,0 +1,11 @@
+trace=1 # print each year?
+def calc(principal, interest, years):
+    for y in range(years):
+        principal = principal*(1 + (interest / 100.0))
+        if trace:
+            print (trace)
+            print (y+1, '=>%.2f' % principal)
+    return principal
+
+X=calc(65000,5.5,10)
+print(X)
